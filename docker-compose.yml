@@ -1,0 +1,14 @@
+version: '2'
+services:
+  db:
+    build:
+      context: .
+      dockerfile: .db.dockerfile
+    ports:
+      - 3306:3306
+  web:
+    build:
+      context: .
+      dockerfile: .opencart.dockerfile
+    ports:
+      - 8080:80

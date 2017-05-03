@@ -1,0 +1,10 @@
+FROM mysql:5.6
+
+ENV MYSQL_ROOT_PASSWORD 8f5cb135dd63
+ENV MYSQL_USER root_admin
+ENV MYSQL_PASSWORD rootadmin
+ENV MYSQL_DATABASE opencart_db
+
+EXPOSE 3306
+
+CMD ["mysqld"]
