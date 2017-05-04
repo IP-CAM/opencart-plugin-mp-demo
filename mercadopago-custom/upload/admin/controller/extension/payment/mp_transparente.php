@@ -122,7 +122,7 @@ class ControllerExtensionPaymentMPTransparente extends Controller {
 					$this->request->post['mp_transparente_methods'] .= $name . ',';
 				}
 			}
-			
+
 			$this->model_setting_setting->editSetting('mp_transparente', $this->request->post);
 
 			$this->setSettings();
@@ -130,7 +130,7 @@ class ControllerExtensionPaymentMPTransparente extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 			$this->response->redirect(HTTPS_SERVER . 'index.php?route=extension/extension&token=' . $this->session->data['token']);
 
-			
+
 		}
 
 		$this->response->setOutput($this->load->view('extension/payment/mp_transparente.tpl', $data));
@@ -254,7 +254,7 @@ class ControllerExtensionPaymentMPTransparente extends Controller {
 	private function validate() {
 		if (!$this->user->hasPermission('modify', 'extension/payment/mp_transparente')) {
 			$this->_error['warning'] = $this->language->get('error_permission');
-			
+
 		}
 		return count($this->_error) < 1;
 
@@ -287,7 +287,7 @@ class ControllerExtensionPaymentMPTransparente extends Controller {
 
         try {
 			$access_token = $this->config->get('mp_transparente_access_token');
-			$mp = new MP($access_token);        	
+			$mp = new MP($access_token);
             $userResponse = $mp->saveSettings($request);
         } catch (Exception $e) {
         	error_log($e);

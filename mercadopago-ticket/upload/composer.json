@@ -1,0 +1,18 @@
+{
+    "name": "jibaceta/mercadopago-custom",
+    "authors": [
+        {
+            "name": "Joel Ibaceta",
+            "email": "mail@joelibaceta.com"
+        }
+    ],
+    "repositories": [
+      {
+          "url": "git@github.com:mercadopago/px-php.git",
+          "type": "git"
+      }
+    ],
+    "require": {
+      "mercadopago/px-php" : "dev-develop"
+    }
+}

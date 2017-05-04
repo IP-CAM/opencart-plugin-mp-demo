@@ -38,6 +38,11 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) zip \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y vsftpd
+
+COPY  /utils/vsftpd /etc/init.d/vsftpd
+COPY /utils/vsftpd.conf /etc/vsftpd.conf
+
 WORKDIR /
 
 COPY /utils/vhost.conf /tmp/vhost.conf
@@ -65,5 +70,7 @@ RUN chmod -R 777 /var/www/
 
 RUN mv /var/www/config-dist.php /var/www/config.php
 RUN mv /var/www/admin/config-dist.php /var/www/admin/config.php
+
+RUN cp /var/www/php.ini /usr/local/etc/php/php.ini
 
 RUN ls -la /var/www/

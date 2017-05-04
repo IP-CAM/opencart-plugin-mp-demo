@@ -12,3 +12,4 @@ services:
       dockerfile: .web.dockerfile
     ports:
       - 8080:80
+      - 821:21

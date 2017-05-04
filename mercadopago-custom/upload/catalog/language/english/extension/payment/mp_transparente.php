@@ -1,6 +1,7 @@
 <?php
 // Text
 //$_['Stext_title'] = '<img src="./view/image/payment/mp_transparente.png" alt="Mercadopago" title="Mercadopago" style="border: 1px solid #EEEEEE;">'
+$_['heading_title'] = 'MercadoPago - Custom Checkout';
 $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $admin = strpos($url, 'admin') !== FALSE ? '' : './admin/';
 $_['text_title'] = '<img src="' . $admin . 'view/image/payment/mp_transparente.png" alt="Mercadopago" title="Mercadopago" style="border: 1px solid #EEEEEE; background-color: white;"> - Custom Checkout';

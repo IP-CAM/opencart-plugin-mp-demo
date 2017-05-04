@@ -1,4 +1,5 @@
 <?php
+$_['heading_title'] = 'MercadoPago - Custom Checkout';
 // Text
 $url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $admin = strpos($url, 'admin') !== FALSE ? '' : './admin/';
