@@ -10,6 +10,8 @@ class ControllerExtensionPaymentMPTransparente extends Controller {
 	private $order_info;
 	private $message;
   
+  private $config;
+  
 	private $special_checkouts = array('MLM', 'MLB', "MPE");
   
 	private $sponsors = array(
@@ -27,6 +29,9 @@ class ControllerExtensionPaymentMPTransparente extends Controller {
 	public function index() {
         
     MercadoPago\MercadoPagoSdk::initialize();
+    $this->$config = MercadoPago\MercadoPagoSdk::config();
+    $this->$config->configure(['ACCESS_TOKEN' => $this->config->get('mp_transparente_access_token')]);
+    
 
 		$data['customer_email'] = $this->customer->getEmail();
 		$data['button_confirm'] = $this->language->get('button_confirm');
@@ -92,8 +97,9 @@ class ControllerExtensionPaymentMPTransparente extends Controller {
         // =========================TODO: Update this ================================
         
             $method = $this->request->get['payment_method_id'];
-            $token = $this->config->get('mp_transparente_access_token');
+            // $token = $this->config->get('mp_transparente_access_token');
             $url = 'https://api.mercadopago.com/v1/payment_methods/card_issuers?payment_method_id=' . $method . '&access_token=' . $token;
+            $response = MercadoPago\MercadoPagoSdk::get("/v1/payment_methods/card_issuers", );
             $issuers = $this->callJson($url);
             echo json_encode($issuers);
         
