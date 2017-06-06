@@ -411,7 +411,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:mercadopago/px-php.git",
-                "reference": "ab4d42f3c1ef09a717e3600393db58700a14c165"
+                "reference": "217f858e5ff0fe56c017ad9d165f00a9524869b8"
             },
             "require": {
                 "doctrine/common": "~2.4",
@@ -449,7 +449,7 @@
                 }
             ],
             "homepage": "https://github.com/mercadopago/px-php",
-            "time": "2017-03-31 19:54:18"
+            "time": "2017-06-06 15:01:02"
         }
     ],
     "packages-dev": [],

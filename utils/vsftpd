@@ -7,7 +7,5 @@ service ftp
         server                  = /usr/sbin/vsftpd
         per_source              = 5
         instances               = 200
-        banner_fail             = /etc/vsftpd.busy
-        log_on_success          += PID HOST DURATION
-        log_on_failure          += HOST
+        banner_fail             = /etc/vsftpd.busy 
 }

@@ -4,6 +4,10 @@ ENV MYSQL_HOST db
 ENV VIRTUAL_HOST 127.0.0.1
 
 
+# ============================
+# Web Server Section
+# ============================
+
 RUN apt-get update && apt-get install -y inetutils-ftp vim wget
 
 RUN a2enmod rewrite
@@ -44,24 +48,23 @@ WORKDIR /
 # FTP Section
 # ============================
 
-RUN wget -c https://download.pureftpd.org/pure-ftpd/releases/pure-ftpd-1.0.43.tar.gz
-RUN tar -xzf pure-ftpd-1.0.43.tar.gz
+RUN apt-get update && apt-get install -y --no-install-recommends vsftpd
+RUN apt-get update && apt-get install -y xinetd
 
-RUN cd /pure-ftpd-1.0.43; ./configure optflags=--with-everything --with-privsep --without-capabilities
-RUN cd /pure-ftpd-1.0.43; make; make install
 
-RUN mkdir -p /etc/pure-ftpd/conf
+ADD /utils/vsftpd.conf /etc/vsftpd.conf
+ADD /utils/vsftpd /etc/xinetd.d/vsftpd
 
-RUN echo yes > /etc/pure-ftpd/conf/ChrootEveryone
-RUN echo no > /etc/pure-ftpd/conf/PAMAuthentication
-RUN echo yes > /etc/pure-ftpd/conf/UnixAuthentication
-RUN echo "30000 30009" > /etc/pure-ftpd/conf/PassivePortRange
-RUN echo "10" > /etc/pure-ftpd/conf/MaxClientsNumber
+RUN useradd -m ftpuser -s /bin/bash -d /home/ftpuser
+RUN echo ftpuser:ftpass | /usr/sbin/chpasswd
 
-RUN useradd -m -s /bin/bash ftpuser
-RUN echo ftpuser:ftppass |chpasswd
+RUN usermod -d /var/ftp/ftpuser/ ftpuser
 
-EXPOSE 20 21 30000 30001 30002 30003 30004 30005 30006 30007 30008 30009
+RUN service xinetd stop
+
+RUN service vsftpd restart &
+
+EXPOSE 21
 
 
 # ============================
@@ -102,3 +105,10 @@ RUN mv /var/www/admin/config-dist.php /var/www/admin/config.php
 RUN cp /var/www/php.ini /usr/local/etc/php/php.ini
 
 RUN ls -la /var/www/
+
+
+# ============================
+# Selenium Section
+# ============================
+
+

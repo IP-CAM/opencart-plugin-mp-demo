@@ -417,7 +417,7 @@
         "source": {
             "type": "git",
             "url": "git@github.com:mercadopago/px-php.git",
-            "reference": "ab4d42f3c1ef09a717e3600393db58700a14c165"
+            "reference": "217f858e5ff0fe56c017ad9d165f00a9524869b8"
         },
         "require": {
             "doctrine/common": "~2.4",
@@ -432,7 +432,7 @@
             "squizlabs/php_codesniffer": "2.3.*",
             "symfony/yaml": "~2.5"
         },
-        "time": "2017-03-31T19:54:18+00:00",
+        "time": "2017-06-06T15:01:02+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

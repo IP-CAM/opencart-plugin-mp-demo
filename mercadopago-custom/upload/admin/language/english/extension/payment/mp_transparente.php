@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title'] = 'MercadoPago - Custom Checkout';
+$_['heading_title'] = 'MercadoPago ' . MercadoPago\Version::$_VERSION . '- Custom Checkout';
 
 // Text
 $_['text_payment'] = 'Payment';
