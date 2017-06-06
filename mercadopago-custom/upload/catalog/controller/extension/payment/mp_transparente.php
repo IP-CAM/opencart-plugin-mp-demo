@@ -305,6 +305,7 @@ class ControllerExtensionPaymentMPTransparente extends Controller {
 	public function notifications() {
         
         // =========================TODO: Update this ================================
+        
             // $this->log->write();
 
             if (isset($this->request->get['topic']) && $this->request->get['topic'] == 'payment') {
@@ -358,7 +359,9 @@ class ControllerExtensionPaymentMPTransparente extends Controller {
 	}
 
 	private function createCustomer() {
+    
         // =========================TODO: Update this ================================
+        
             $access_token = $this->config->get('mp_transparente_access_token');
             $this->load->model('checkout/order');
             $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
@@ -371,6 +374,7 @@ class ControllerExtensionPaymentMPTransparente extends Controller {
 	}
 
 	private function getCards() {
+    
         // =========================TODO: Update this ================================
         
             $id = $this->getCustomerId();
